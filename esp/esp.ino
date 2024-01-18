@@ -6,7 +6,7 @@ const int tiempo_de_mariposas = 4000;       //[ms] tiempo máximo de los motores
 const int tolerancia = 100;
 
 // uint32_t tiempo; declarado en que_hora_es()
-uint32_t tiempo_calibracion; // tiempo que tomó la calibración
+uint32_t tiempo_offset; // tiempo que tomó la calibración y el loop 
 int segundos, minutos, horas, psegundos;
 int ss, mm, hh;
 int militar;
@@ -89,7 +89,7 @@ void setup() {
   Serial.begin(9600);
 
   delay(1000);
-  Serial.println(F("MIRKO"));
+  Serial.println(F("MIRKO PETROVICH"));
 
   Serial.println(F("        __.....__"));
   Serial.println(F("     .'\" _  o    \"`."));
@@ -143,7 +143,7 @@ void setup() {
   calibra_M3();
 
   M_off();
-  tiempo_calibracion = millis();
+  tiempo_offset = millis();
   prende_atomizadores();
 }
 
@@ -154,21 +154,6 @@ void loop() {
   check_mariposas();
   check_atomizadores();
 
-   if ((segundos >= 10) && (segundos < 11)) {
-    if (!mariposa_3) M3_abre();
-    }
-
-      if ((segundos >= 15) && (segundos < 16)) {
-    if (!mariposa_2) M2_abre();
-    }
-
-      if ((segundos >= 20) && (segundos < 21)) {
-    if (!mariposa_1) M1_abre();
-    }
-
-      if ((segundos >= 25) && (segundos < 26)) {
-    if (!mariposa_0) M0_abre();
-    }
 
   if ((segundos < 2)) {
     if (!x3b_status) X3B_on();
@@ -235,15 +220,89 @@ void loop() {
     if (!mariposa_0) M0_cierra();
   }
 
+           if (segundos >= 60
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           ) {
+            again();
+  }
+
   
-
-
-
-  
-
-
-
-
   delay(50);
 
   if (psegundos != segundos) {
@@ -251,6 +310,11 @@ void loop() {
     psegundos = segundos;
   }
 }
+
+void again() {
+  tiempo_offset = millis();
+}
+
 
 void calibra_M0() {
   Serial.println("------------------------------> CALIBRANDO_M0");
@@ -591,7 +655,7 @@ void check_mariposas() {
 
 void que_hora_es() {
 
-  uint32_t tiempo = millis() - tiempo_calibracion;
+  uint32_t tiempo = millis() - tiempo_offset;
   segundos = tiempo / 1000;
   minutos = segundos / 60;
   hh = minutos / 60;
