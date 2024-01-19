@@ -18,8 +18,8 @@ bool atom_status;
 int pin_atom = 7;
 uint32_t t_inicio_atom;
 uint32_t t_fin_atom;
-const uint32_t t_dur_on_atom = 40;    // segundos encendidos
-const uint32_t t_dur_off_atom = 120;  // 5 min apagados
+const uint32_t t_dur_on_atom = 3600;    // segundos encendidos
+const uint32_t t_dur_off_atom = 120;  // 2 min apagados
 
 // -------------------------------------------------------
 // VARIABLES EXTRACTORES
@@ -160,145 +160,75 @@ void loop() {
   }
 
   if ((segundos >= 5) && (segundos < 6)) {
-    if (x3b_status) X3B_off();
     if (!x3a_status) X3A_on();
   }
-
-  if ((segundos >= 10) && (segundos < 11)) {
-    if (x3a_status) X3A_off();
-    if (!x2b_status) X2B_on();
-  }
-
-  if ((segundos >= 30) && (segundos < 31)) {
-    if (x2b_status) X2B_off();
-    if (!x2a_status) X2A_on();
-  }
-
-  if ((segundos >= 35) && (segundos < 36)) {
-    if (x2a_status) X2A_off();
-    if (!x1b_status) X1B_on();
-  }
-
-  if ((segundos >= 40) && (segundos < 41)) {
-    if (x1b_status) X1B_off();
-    if (!x1a_status) X1A_on();
-  }
-
-  if ((segundos >= 45) && (segundos < 46)) {
-    if (x1a_status) X1A_off();
-  }
-
 
   if ((segundos >=6) && (segundos < 7)) {
     if (!mariposa_3) M3_abre();
   }
 
-   if ((segundos >= 11) && (segundos < 12)) {
-    if (!mariposa_2) M2_abre();
-    }
-
-    if ((segundos >=15 ) && (segundos < 16)) {
-    if (!mariposa_3) M3_cierra();
+  if ((segundos >= 10) && (segundos < 11)) {
+    if (!x2b_status) X2B_on();
   }
-     if ((segundos >= 16) && (segundos < 17)) {
+
+  if ((segundos >= 11) && (segundos < 12)) {
+    if (!mariposa_2) M2_abre();
+  }
+
+  if ((segundos >= 15) && (segundos < 16)) {
+    if (x3b_status) X3B_off();
+  }
+
+   if ((segundos >= 16) && (segundos < 17)) {
     if (!mariposa_1) M1_abre();
   }
 
-       if ((segundos >= 20) && (segundos < 21)) {
-    if (!mariposa_2) M2_cierra();
+  if ((segundos >= 20) && (segundos < 21)) {
+    if (x3a_status) X3A_off();
   }
 
-         if ((segundos >= 21) && (segundos < 22)) {
-    if (!mariposa_0) M0_abre();
+   if ((segundos >= 21) && (segundos < 22)) {
+   if (!mariposa_0) M0_abre();
   }
 
-         if ((segundos >= 25) && (segundos < 26)) {
-    if (!mariposa_1) M1_cierra();
+   if ((segundos >=25) && (segundos < 26)) {
+    if (mariposa_3) M3_cierra();
   }
 
-         if ((segundos >= 30) && (segundos < 31)) {
-    if (!mariposa_0) M0_cierra();
+  if ((segundos >= 30) && (segundos < 31)) {
+    if (!x2a_status) X2A_on();
+    if (mariposa_2) M2_cierra();
   }
 
-           if (segundos >= 60
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           ) {
+  if ((segundos >= 35) && (segundos < 36)) {
+    if (!x1b_status) X1B_on();
+    if (mariposa_1) M1_cierra();
+  }
+
+  if ((segundos >= 40) && (segundos < 41)) {
+    if (!x1a_status) X1A_on();
+    if (x2b_status) X2B_off();
+    if (mariposa_0) M0_cierra();
+
+  
+  }
+
+  if ((segundos >= 45) && (segundos < 46)) {
+    if (x2a_status) X2A_off();
+
+  }
+
+  if ((segundos >= 50) && (segundos < 51)) {
+    if (x1b_status) X1B_off();
+
+  }
+
+   if ((segundos >= 55) && (segundos < 56)) {
+    if (x1a_status) X1A_off();
+
+  }
+
+           if (segundos >= 70) {
             again();
   }
 
