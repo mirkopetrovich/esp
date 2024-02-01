@@ -89,7 +89,7 @@ void setup() {
   Serial.begin(9600);
 
   delay(1000);
-  Serial.println(F("MIRKO PETROVICH"));
+  Serial.println(F("FUNGI"));
 
   Serial.println(F("        __.....__"));
   Serial.println(F("     .'\" _  o    \"`."));
@@ -228,8 +228,26 @@ void loop() {
 
   }
 
-           if (segundos >= 70) {
-            again();
+           if ((segundos >= 70) && (segundos < 71)) {
+            if (!x1a_status) X1A_on();
+            if (!x1b_status) X1B_on();
+            if (!x2a_status) X2A_on();
+            if (!x2b_status) X2B_on();
+            if (!x3a_status) X3A_on();
+            if (!x3b_status) X3B_on();
+  }
+
+  if ((segundos >= 85) && (segundos < 86)) {
+            if (x1a_status) X1A_off();
+            if (x1b_status) X1B_off();
+            if (x2a_status) X2A_off();
+            if (x2b_status) X2B_off();
+            if (x3a_status) X3A_off();
+            if (x3b_status) X3B_off();
+  }
+
+  if (segundos >= 100) {
+    again();
   }
 
   
